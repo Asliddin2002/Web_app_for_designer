@@ -1,4 +1,3 @@
-import Header from "@/components/header";
 import HeroBanner from "@/components/HomePageHero";
 
 export default function Home() {
