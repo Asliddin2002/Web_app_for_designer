@@ -29,11 +29,11 @@ const HeroBanner = () => {
 
       <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
         <div className="max-w-4xl mx-auto mt-auto mb-[80px]">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 animate-fadeIn">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 animate-fadeIn font-gilroy">
             Tursunaliyev Hasanbek
           </h1>
 
-          <p className="text-xl md:text-2xl lg:text-3xl text-white mb-12 animate-fadeIn delay-100">
+          <p className="text-xl md:text-2xl lg:text-3xl text-white mb-12 animate-fadeIn delay-100 font-gilroy-light">
             I am an interior, exterior and graphic designer!
           </p>
         </div>

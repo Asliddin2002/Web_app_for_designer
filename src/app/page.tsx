@@ -1,13 +1,12 @@
 import HeroBanner from "@/components/HomePageHero";
+import Portfolio from "@/components/portfolio";
 
 export default function Home() {
   return (
     <div>
       <main>
         <HeroBanner />
-        <section id="portfolio" className="h-[100vh]">
-          Portfolio
-        </section>
+        <Portfolio />
       </main>
     </div>
   );
