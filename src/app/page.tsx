@@ -1,13 +1,9 @@
-import HeroBanner from "@/components/HomePageHero";
-import Portfolio from "@/components/portfolio";
+import FullPageCarousel from "@/pages/home/Carousel";
 
 export default function Home() {
   return (
-    <div>
-      <main>
-        <HeroBanner />
-        <Portfolio />
-      </main>
-    </div>
+    <main>
+      <FullPageCarousel />
+    </main>
   );
 }

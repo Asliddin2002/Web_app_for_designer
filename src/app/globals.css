@@ -41,29 +41,29 @@ body {
   line-height: 30px;
   font-weight: 300;
   position: relative;
-  background-color: #041b15;
-  background-image: repeating-linear-gradient(
+  background-color: #000000;
+  /* background-image: repeating-linear-gradient(
     to right,
 
-    /* Line 1 */ transparent,
+    transparent,
     transparent 19.75%,
     rgba(34, 34, 34, 0.6) 19.76%,
     transparent 19.85%,
 
-    /* Line 2 */ transparent 39.75%,
+    transparent 39.75%,
     rgba(34, 34, 34, 1) 39.76%,
     transparent 39.85%,
 
-    /* Line 3 */ transparent 59.75%,
+    transparent 59.75%,
     rgba(34, 34, 34, 1) 59.76%,
     transparent 59.85%,
 
-    /* Line 4 */ transparent 79.75%,
+    transparent 79.75%,
     rgba(34, 34, 34, 1) 79.76%,
     transparent 79.85%
-  );
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
+  ); */
+  /* background-size: 100% 100%;
+  background-repeat: no-repeat; */
 }
 
 @keyframes fadeIn {
