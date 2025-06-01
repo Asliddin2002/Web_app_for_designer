@@ -1,178 +1,252 @@
 "use client";
-
-import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import React, { useEffect, useRef, useState } from "react";
+import Slider from "react-slick";
 
-type Slide = {
-  id: number;
-  src: string;
-};
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-const originalSlides: Slide[] = [
-  { id: 1, src: "/images/interior.jpg" },
-  { id: 2, src: "/images/interior.jpg" },
-  { id: 3, src: "/images/interior.jpg" },
-];
+function SimpleSlider() {
+  const sliderRef = useRef<Slider>(null);
+  const [isSwiping, setIsSwiping] = useState(false);
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [progress, setProgress] = useState(0);
+  const progressInterval = useRef<NodeJS.Timeout>(null);
 
-// Create clones for seamless infinite scroll
-const slides = [
-  originalSlides[originalSlides.length - 1], // clone of last
-  ...originalSlides,
-  originalSlides[0], // clone of first
-];
-
-const FullPageCarousel = () => {
-  const [currentIndex, setCurrentIndex] = useState(1); // Start at first real slide
-  const [offsetX, setOffsetX] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
-  const [transitionEnabled, setTransitionEnabled] = useState(true);
-
-  const startXRef = useRef<number>(0);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  const slideWidth = typeof window !== "undefined" ? window.innerWidth : 0;
-
-  // Auto-scroll
-  useEffect(() => {
-    startAutoScroll();
-    return () => stopAutoScroll();
-  }, [currentIndex]);
-
-  const startAutoScroll = () => {
-    stopAutoScroll();
-    timeoutRef.current = setTimeout(() => {
-      goToSlide(currentIndex + 1);
-    }, 5000);
-  };
-
-  const stopAutoScroll = () => {
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
-  };
-
-  const goToSlide = (index: number) => {
-    setTransitionEnabled(true);
-    setCurrentIndex(index);
-  };
-
-  const handleStart = (clientX: number) => {
-    stopAutoScroll();
-    setIsDragging(true);
-    startXRef.current = clientX;
-  };
-
-  const handleMove = (clientX: number) => {
-    if (!isDragging) return;
-    const distance = clientX - startXRef.current;
-    setOffsetX(distance);
-  };
-
-  const handleEnd = () => {
-    setIsDragging(false);
-    const threshold = slideWidth * 0.2;
-
-    if (offsetX > threshold) {
-      goToSlide(currentIndex - 1);
-    } else if (offsetX < -threshold) {
-      goToSlide(currentIndex + 1);
-    }
-
-    setOffsetX(0);
-    startAutoScroll();
-  };
-
-  // Reset to real slide after transition to clone
-  useEffect(() => {
-    if (!transitionEnabled) return;
-
-    const handleTransitionEnd = () => {
-      setTransitionEnabled(false);
-
-      if (currentIndex === slides.length - 1) {
-        // Jump to real first
-        setCurrentIndex(1);
-      } else if (currentIndex === 0) {
-        // Jump to real last
-        setCurrentIndex(slides.length - 2);
-      }
-
-      setTimeout(() => setTransitionEnabled(true), 0);
-    };
-
-    const container = containerRef.current;
-    if (container) {
-      container.addEventListener("transitionend", handleTransitionEnd);
-    }
-
-    return () => {
-      if (container) {
-        container.removeEventListener("transitionend", handleTransitionEnd);
-      }
-    };
-  }, [currentIndex]);
-
-  // Touch and mouse handlers
-  const handleTouchStart = (e: React.TouchEvent) =>
-    handleStart(e.touches[0].clientX);
-  const handleTouchMove = (e: React.TouchEvent) =>
-    handleMove(e.touches[0].clientX);
-  const handleTouchEnd = () => handleEnd();
-
-  const handleMouseDown = (e: React.MouseEvent) => {
-    e.preventDefault();
-    handleStart(e.clientX);
-  };
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging) return;
-    handleMove(e.clientX);
-  };
-  const handleMouseUp = () => handleEnd();
-  const handleMouseLeave = () => {
-    if (isDragging) handleEnd();
-  };
-
-  return (
-    <div
-      className="w-screen h-screen overflow-hidden relative touch-none"
-      ref={containerRef}
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
-      onMouseDown={handleMouseDown}
-      onMouseMove={handleMouseMove}
-      onMouseUp={handleMouseUp}
-      onMouseLeave={handleMouseLeave}
-    >
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 1300,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    className: "w-full h-full",
+    autoplay: true,
+    autoplaySpeed: 10000,
+    arrows: false,
+    pauseOnHover: false,
+    beforeChange: (current: number, next: number) => {
+      setIsSwiping(true);
+      setActiveSlide(next);
+      setProgress(0);
+    },
+    afterChange: () => {
+      setIsSwiping(false);
+    },
+    appendDots: (dots: React.ReactNode) => (
       <div
-        className="flex h-full"
         style={{
-          width: `${slides.length * 100}vw`,
-          transform: `translateX(calc(-${
-            currentIndex * 100
-          }vw + ${offsetX}px))`,
-          transition:
-            transitionEnabled && !isDragging ? "transform 0.5s ease" : "none",
+          position: "absolute",
+          right: "30px",
+          bottom: "50%",
+          transform: "translateY(50%)",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "flex-end",
+          gap: "1px",
+          zIndex: 20,
+          width: "40px",
         }}
       >
-        {slides.map((slide, i) => (
+        {dots}
+      </div>
+    ),
+    customPaging: (i: number) => (
+      <div
+        style={{ display: "flex", justifyContent: "flex-end", width: "20px" }}
+      >
+        <div
+          style={{
+            width: "10px",
+            height: "3px",
+            borderRadius: "50px",
+            backgroundColor: "#E1E1E1",
+            transition: "all 0.5s ease",
+          }}
+          className="dot-item"
+        />
+      </div>
+    ),
+  };
+
+  useEffect(() => {
+    progressInterval.current = setInterval(() => {
+      setProgress((prev) => {
+        const increment = 100 / (10000 / 16);
+        const newProgress = prev + increment;
+        if (newProgress >= 100) {
+          clearInterval(progressInterval.current);
+          return 100;
+        }
+        return newProgress;
+      });
+    }, 16);
+
+    return () => {
+      if (progressInterval.current) {
+        clearInterval(progressInterval.current);
+      }
+    };
+  }, [activeSlide]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowRight") {
+        sliderRef.current?.slickNext();
+      } else if (e.key === "ArrowLeft") {
+        sliderRef.current?.slickPrev();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  useEffect(() => {
+    const handleWheel = (e: WheelEvent) => {
+      if (e.deltaY > 0) {
+        sliderRef.current?.slickNext();
+      } else if (e.deltaY < 0) {
+        sliderRef.current?.slickPrev();
+      }
+    };
+
+    const sliderContainer = document.querySelector(".slider-container");
+    if (sliderContainer) {
+      sliderContainer.addEventListener("wheel", handleWheel);
+      return () => sliderContainer.removeEventListener("wheel", handleWheel);
+    }
+  }, []);
+
+  useEffect(() => {
+    const slider = sliderRef.current?.innerSlider?.list;
+
+    if (!slider) return;
+
+    const handleSwipeStart = () => setIsSwiping(true);
+    const handleSwipeEnd = () => setIsSwiping(false);
+
+    slider.addEventListener("mousedown", handleSwipeStart);
+    slider.addEventListener("touchstart", handleSwipeStart);
+    slider.addEventListener("mouseup", handleSwipeEnd);
+    slider.addEventListener("touchend", handleSwipeEnd);
+    slider.addEventListener("mouseleave", handleSwipeEnd);
+
+    return () => {
+      slider.removeEventListener("mousedown", handleSwipeStart);
+      slider.removeEventListener("touchstart", handleSwipeStart);
+      slider.removeEventListener("mouseup", handleSwipeEnd);
+      slider.removeEventListener("touchend", handleSwipeEnd);
+      slider.removeEventListener("mouseleave", handleSwipeEnd);
+    };
+  }, []);
+
+  return (
+    <div className="slider-container h-screen overflow-hidden relative bg-[#141414]">
+      <div className="absolute left-0 top-0 w-[168px] h-[90px] bg-[#141414] z-30 flex items-center justify-center gap-[32px]">
+        <Image src={"/_TURSUNALIYEV.png"} alt="logo" width={100} height={80} />
+      </div>
+      <div className="absolute right-0 top-0 w-[168px] h-[90px] bg-[#141414] z-30 flex items-center justify-center gap-[32px]">
+        <span className="text-[10px] font-semibold tracking-[3px] text-[#E6E6E6]">
+          MENU
+        </span>
+        <div className="flex flex-col gap-1 cursor-pointer">
+          <div className="w-[17px] h-[2.5px] bg-[#E6E6E6] rounded-2xl"></div>
+          <div className="w-[17px] h-[2.5px] bg-[#E6E6E6] rounded-2xl"></div>
+          <div className="w-[17px] h-[2.5px] bg-[#E6E6E6] rounded-2xl"></div>
+        </div>
+      </div>
+
+      {/* Progress Bar */}
+      <div className="absolute bottom-[40px] left-[180px] w-[350px]  h-[2px] bg-[#2D2D2D] z-40 rounded-full overflow-hidden">
+        <div
+          className="h-full bg-[#FF0000] transition-all duration-100 ease-linear rounded-full"
+          style={{ width: `${progress}%` }}
+        ></div>
+      </div>
+
+      <Slider ref={sliderRef} {...settings}>
+        {[...Array(3)].map((_, i) => (
           <div
             key={i}
-            className="w-screen h-screen flex-shrink-0"
-            style={{ userSelect: "none" }}
+            className={`h-screen w-full relative slide content bg-[#141414] ${
+              i === activeSlide ? "active-content" : "inactive-content"
+            } ${i === activeSlide ? "active-slide" : "inactive-slide"}`}
           >
-            <Image
-              src={slide.src}
-              alt="Slide"
-              width={1000}
-              height={800}
-              className="w-full h-full object-cover"
-              draggable={false}
-            />
+            <div
+              className={`slide flex flex-col z-40 bg-transparent absolute top-[50%] -left-[90px] -translate-y-[50%] transition-transform duration-800 content ${
+                i === activeSlide ? "active-content" : "inactive-content"
+              }`}
+            >
+              <div className="flex items-center gap-2">
+                <div className="w-[25px] h-[3px] bg-[#FF0000] rounded-2xl"></div>
+                <span className="text-[10px] font-bold tracking-widest text-[#939393]">
+                  INTERIOR DESIGN
+                </span>
+              </div>
+              <h1 className="text-[68px] font-extrabold mt-[40px] text-[#E6E6E6]">
+                Little Cottage
+              </h1>
+              <h1 className="text-[68px] font-extrabold text-transparent stroke-text mt-[50px] max-w-[600px]">
+                Concept
+              </h1>
+              <p className="mt-[50px] text-[13px] text-[#e6e6e6d1] w-[340px] leading-relaxed tracking-wide font-light">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cum
+                nihil inventore in nemo ullam explicabo.
+              </p>
+              <div className="text-[#E6E6E6] text-[10px] tracking-widest font-semibold mt-[30px] flex items-center gap-3">
+                <button className="py-2 w-[150px] border-[2px] rounded-[3px] border-[#E6E6E6] hover:text-[#DF0303] cursor-pointer transition duration-500">
+                  OPEN CASE
+                </button>
+                <button className="w-[150px] hover:text-[#DF0303] cursor-pointer transition duration-500">
+                  ALL PROJECTS
+                </button>
+              </div>
+            </div>
+            <div className="flex items-center gap-5"></div>
+
+            <div className="h-full overflow-hidden w-[80vw] relative">
+              <div className="absolute -left-[100px] h-[200vh] top-0 bottom-0 w-[350px] bg-[#141414] blur-[100px] z-10"></div>
+
+              <div className="absolute -left-[200px] top-0 bottom-0 right-0 bg-[#141414] opacity-30 z-20"></div>
+              <Image
+                src={`/images/interior${i + 1}.jpg`}
+                alt="carousel image"
+                width={1920}
+                height={1080}
+                className={`carousel-image object-cover w-full h-full transition-transform duration-800 image ${
+                  i === activeSlide ? "active-image" : "inactive-image"
+                }`}
+              />
+            </div>
           </div>
         ))}
-      </div>
+      </Slider>
+
+      <div className="absolute right-0 top-0 bottom-0 w-[90px] bg-[#141414] z-10"></div>
+
+      <style jsx global>{`
+        .slick-slide {
+          display: flex !important;
+          justify-content: end;
+          align-items: center;
+        }
+
+        .slick-active .dot-item {
+          width: 20px !important;
+          background-color: #ff0000 !important;
+          height: "2px";
+        }
+
+        .slick-active .carousel-image {
+          // transform: scale(1.1);
+        }
+
+        .carousel-image {
+          // transform: scale(1.2);
+        }
+      `}</style>
     </div>
   );
-};
+}
 
-export default FullPageCarousel;
+export default SimpleSlider;

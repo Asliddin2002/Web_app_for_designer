@@ -1,7 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  content: [],
+  theme: {
+    extend: {
+      colors: {
+        black: "#141414",
+      },
+    },
+  },
+  plugins: [],
 };
 
 export default nextConfig;
