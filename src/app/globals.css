@@ -28,7 +28,6 @@
   --font-mono: var(--font-geist-mono);
 }
 
-
 body {
   font-family: "Raleway", sans-serif;
   color: #fff;
@@ -75,6 +74,21 @@ body {
     transform: translateY(8px);
     opacity: 0;
   }
+}
+
+/* Smooth transition */
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.fade-out {
+  animation: fadeOut 0.3s ease-out forwards;
 }
 
 /* Scroll animation */

@@ -130,7 +130,7 @@ function SimpleSlider() {
       </div>
 
       {/* Progress Bar */}
-      <div className="absolute bottom-[40px] left-[180px] w-[350px]  h-[2px] bg-[#2D2D2D] z-40 rounded-full overflow-hidden">
+      <div className="absolute bottom-[40px] left-[14%] w-[350px]  h-[2px] bg-[#585454] z-40 rounded-full overflow-hidden">
         <div
           className="h-full bg-[#FF0000] transition-all duration-100 ease-linear rounded-full"
           style={{ width: `${progress}%` }}
@@ -178,7 +178,7 @@ function SimpleSlider() {
             <div className="flex items-center gap-5"></div>
 
             <div className="h-full overflow-hidden w-[80vw] relative">
-              <div className="absolute -left-[100px] h-[200vh] top-0 bottom-0 w-[350px] bg-[#141414] blur-[100px] z-10"></div>
+              <div className="absolute -left-[150px] h-[200vh] top-0 bottom-0 w-[350px] bg-[#141414] blur-[100px] z-10"></div>
 
               <div className="absolute -left-[200px] top-0 bottom-0 right-0 bg-[#141414] opacity-30 z-20"></div>
               <Image
