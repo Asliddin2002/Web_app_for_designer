@@ -8,7 +8,6 @@ import "slick-carousel/slick/slick-theme.css";
 
 function SimpleSlider() {
   const sliderRef = useRef<Slider>(null);
-  const [isSwiping, setIsSwiping] = useState(false);
   const [activeSlide, setActiveSlide] = useState(0);
   const [progress, setProgress] = useState(0);
   const progressInterval = useRef<NodeJS.Timeout>(null);
@@ -25,12 +24,8 @@ function SimpleSlider() {
     arrows: false,
     pauseOnHover: false,
     beforeChange: (current: number, next: number) => {
-      setIsSwiping(true);
       setActiveSlide(next);
       setProgress(0);
-    },
-    afterChange: () => {
-      setIsSwiping(false);
     },
     appendDots: (dots: React.ReactNode) => (
       <div
@@ -50,7 +45,7 @@ function SimpleSlider() {
         {dots}
       </div>
     ),
-    customPaging: (i: number) => (
+    customPaging: () => (
       <div
         style={{ display: "flex", justifyContent: "flex-end", width: "20px" }}
       >
@@ -73,14 +68,13 @@ function SimpleSlider() {
       setProgress((prev) => {
         const increment = 100 / (10000 / 16);
         const newProgress = prev + increment;
-        if (newProgress >= 100) {
+        if (newProgress >= 100 && progressInterval.current) {
           clearInterval(progressInterval.current);
           return 100;
         }
         return newProgress;
       });
     }, 16);
-
     return () => {
       if (progressInterval.current) {
         clearInterval(progressInterval.current);
@@ -110,34 +104,13 @@ function SimpleSlider() {
       }
     };
 
-    const sliderContainer = document.querySelector(".slider-container");
+    const sliderContainer = document.querySelector(
+      ".slider-container"
+    ) as HTMLElement | null;
     if (sliderContainer) {
       sliderContainer.addEventListener("wheel", handleWheel);
       return () => sliderContainer.removeEventListener("wheel", handleWheel);
     }
-  }, []);
-
-  useEffect(() => {
-    const slider = sliderRef.current?.innerSlider?.list;
-
-    if (!slider) return;
-
-    const handleSwipeStart = () => setIsSwiping(true);
-    const handleSwipeEnd = () => setIsSwiping(false);
-
-    slider.addEventListener("mousedown", handleSwipeStart);
-    slider.addEventListener("touchstart", handleSwipeStart);
-    slider.addEventListener("mouseup", handleSwipeEnd);
-    slider.addEventListener("touchend", handleSwipeEnd);
-    slider.addEventListener("mouseleave", handleSwipeEnd);
-
-    return () => {
-      slider.removeEventListener("mousedown", handleSwipeStart);
-      slider.removeEventListener("touchstart", handleSwipeStart);
-      slider.removeEventListener("mouseup", handleSwipeEnd);
-      slider.removeEventListener("touchend", handleSwipeEnd);
-      slider.removeEventListener("mouseleave", handleSwipeEnd);
-    };
   }, []);
 
   return (
