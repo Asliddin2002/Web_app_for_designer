@@ -48,7 +48,7 @@ export default function Loader() {
           src={"/_TURSUNALIYEV.png"}
           alt="logo"
           width={100}
-          height={35}
+          height={36.71}
           priority
         />
       </div>
