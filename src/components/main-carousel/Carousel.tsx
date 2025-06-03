@@ -6,6 +6,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./styles.css";
+import DotGrid from "../dots-animation";
 
 function HomePageCarousel() {
   const sliderRef = useRef<Slider>(null);
@@ -115,7 +116,20 @@ function HomePageCarousel() {
   }, []);
 
   return (
-    <div className="slider-container h-screen overflow-hidden relative ">
+    <div className="slider-container h-screen overflow-hidden relative z-10 ">
+      <div className="absolute inset-0 -z-10">
+        <DotGrid
+          dotSize={2}
+          gap={35}
+          baseColor="#363636"
+          activeColor="#363636"
+          proximity={120}
+          shockRadius={250}
+          shockStrength={5}
+          resistance={750}
+          returnDuration={1.5}
+        />
+      </div>
       <div className="absolute left-0 top-0 w-[168px] h-[90px] bg-customblack z-30 flex items-center justify-center gap-[32px]">
         <Image src={"/_TURSUNALIYEV.png"} alt="logo" width={100} height={80} />
       </div>
@@ -131,13 +145,13 @@ function HomePageCarousel() {
       </div>
 
       {/* Progress Bar */}
-      <div className="absolute bottom-[40px] left-[14%] 3xl:left-[29%] w-[350px]  h-[2px] bg-[#585454] z-40 rounded-full overflow-hidden">
+      <div className="absolute bottom-[40px] left-[13.5%] 3xl:left-[28%] w-[350px]  h-[2px] bg-[#585454] z-40 rounded-full overflow-hidden">
         <div
           className="h-full bg-[#FF0000] transition-all duration-100 ease-linear rounded-full"
           style={{ width: `${progress}%` }}
         ></div>
       </div>
-
+      <div className="relative"></div>
       <Slider ref={sliderRef} {...settings}>
         {[...Array(3)].map((_, i) => (
           <div
