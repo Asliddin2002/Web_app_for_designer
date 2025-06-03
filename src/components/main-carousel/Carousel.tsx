@@ -2,11 +2,11 @@
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import Slider from "react-slick";
+import DotGrid from "../dots-animation";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./styles.css";
-import DotGrid from "../dots-animation";
 
 function HomePageCarousel() {
   const sliderRef = useRef<Slider>(null);
@@ -129,19 +129,6 @@ function HomePageCarousel() {
           resistance={750}
           returnDuration={1.5}
         />
-      </div>
-      <div className="absolute left-0 top-0 w-[168px] h-[90px] bg-customblack z-30 flex items-center justify-center gap-[32px]">
-        <Image src={"/_TURSUNALIYEV.png"} alt="logo" width={100} height={80} />
-      </div>
-      <div className="absolute right-0 top-0 w-[168px] h-[90px] bg-customblack z-30 flex items-center justify-center gap-[32px]">
-        <span className="text-[10px] font-semibold tracking-[3px] text-customwhite">
-          MENU
-        </span>
-        <div className="flex flex-col gap-1 cursor-pointer">
-          <div className="w-[17px] h-[2.5px] bg-customwhite rounded-2xl"></div>
-          <div className="w-[17px] h-[2.5px] bg-customwhite rounded-2xl"></div>
-          <div className="w-[17px] h-[2.5px] bg-customwhite rounded-2xl"></div>
-        </div>
       </div>
 
       {/* Progress Bar */}

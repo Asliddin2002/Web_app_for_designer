@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 
 import "./globals.css";
 import Loader from "@/components/loader";
+import HamburgerMenu from "@/components/hamburger-menu";
+import Logo from "@/components/logo";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,6 +32,11 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Loader />
+
+        <div className=" relative">
+          <Logo />
+          <HamburgerMenu />
+        </div>
         {children}
       </body>
     </html>
