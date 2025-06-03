@@ -1,5 +1,31 @@
 @import "tailwindcss";
 
+/* tailwind config */
+
+@theme {
+  /* screen */
+  --breakpoint-xs: 400px;
+  --breakpoint-3xl: 1920px;
+
+  --screens: {
+    xs: var(--breakpoint-xs);
+    sm: var(--breakpoint-sm);
+    md: var(--breakpoint-md);
+    lg: var(--breakpoint-lg);
+    xl: var(--breakpoint-xl);
+    2xl: var(--breakpoint-2xl);
+    3xl: var(--breakpoint-3xl);
+  }
+}
+
+@theme {
+  /* colors */
+  --color-customblack: #141414;
+  --color-customwhite: #e6e6e6;
+}
+
+/* generals styles */
+
 @import url("https://fonts.googleapis.com/css?family=Arimo:400|Raleway:300,400,700&display=swap");
 
 @font-face {
@@ -115,40 +141,4 @@ body {
 }
 .font-gilroy-light {
   font-family: "gilroy-light", sans-serif;
-}
-
-.stroke-text {
-  -webkit-text-stroke: 2px #e6e6e6;
-  color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
-}
-
-/* slider styles */
-.slide {
-  transition: transform 1.5s ease, opacity 1.5s ease;
-}
-
-.active-slide .image {
-  transform: scale(1);
-  transition: 1.3s ease;
-}
-
-.inactive-slide .image {
-  transform: scale(1.5);
-  transition: 1.3s ease;
-}
-
-.active-slide .content {
-  transform: scale(1);
-  opacity: 1;
-}
-
-.inactive-slide .content {
-  transform: scale(0.7);
-  opacity: 0.1;
-}
-
-.slick-slide {
-  padding: 0 10px;
 }

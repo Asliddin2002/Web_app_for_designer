@@ -35,7 +35,7 @@ export default function Loader() {
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex flex-col items-center justify-center bg-white dark:bg-[#141414] transition-opacity duration-700 ${
+      className={`fixed inset-0 z-50 flex flex-col items-center justify-center bg-white dark:bg-customblack transition-opacity duration-700 ${
         isVisible ? "opacity-100" : "opacity-0 "
       }`}
     >

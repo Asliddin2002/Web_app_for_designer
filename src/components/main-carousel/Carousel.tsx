@@ -5,8 +5,9 @@ import Slider from "react-slick";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "./styles.css";
 
-function SimpleSlider() {
+function HomePageCarousel() {
   const sliderRef = useRef<Slider>(null);
   const [activeSlide, setActiveSlide] = useState(0);
   const [progress, setProgress] = useState(0);
@@ -114,23 +115,23 @@ function SimpleSlider() {
   }, []);
 
   return (
-    <div className="slider-container h-screen overflow-hidden relative bg-[#141414]">
-      <div className="absolute left-0 top-0 w-[168px] h-[90px] bg-[#141414] z-30 flex items-center justify-center gap-[32px]">
+    <div className="slider-container h-screen overflow-hidden relative ">
+      <div className="absolute left-0 top-0 w-[168px] h-[90px] bg-customblack z-30 flex items-center justify-center gap-[32px]">
         <Image src={"/_TURSUNALIYEV.png"} alt="logo" width={100} height={80} />
       </div>
-      <div className="absolute right-0 top-0 w-[168px] h-[90px] bg-[#141414] z-30 flex items-center justify-center gap-[32px]">
-        <span className="text-[10px] font-semibold tracking-[3px] text-[#E6E6E6]">
+      <div className="absolute right-0 top-0 w-[168px] h-[90px] bg-customblack z-30 flex items-center justify-center gap-[32px]">
+        <span className="text-[10px] font-semibold tracking-[3px] text-customwhite">
           MENU
         </span>
         <div className="flex flex-col gap-1 cursor-pointer">
-          <div className="w-[17px] h-[2.5px] bg-[#E6E6E6] rounded-2xl"></div>
-          <div className="w-[17px] h-[2.5px] bg-[#E6E6E6] rounded-2xl"></div>
-          <div className="w-[17px] h-[2.5px] bg-[#E6E6E6] rounded-2xl"></div>
+          <div className="w-[17px] h-[2.5px] bg-customwhite rounded-2xl"></div>
+          <div className="w-[17px] h-[2.5px] bg-customwhite rounded-2xl"></div>
+          <div className="w-[17px] h-[2.5px] bg-customwhite rounded-2xl"></div>
         </div>
       </div>
 
       {/* Progress Bar */}
-      <div className="absolute bottom-[40px] left-[14%] w-[350px]  h-[2px] bg-[#585454] z-40 rounded-full overflow-hidden">
+      <div className="absolute bottom-[40px] left-[14%] 3xl:left-[29%] w-[350px]  h-[2px] bg-[#585454] z-40 rounded-full overflow-hidden">
         <div
           className="h-full bg-[#FF0000] transition-all duration-100 ease-linear rounded-full"
           style={{ width: `${progress}%` }}
@@ -141,12 +142,12 @@ function SimpleSlider() {
         {[...Array(3)].map((_, i) => (
           <div
             key={i}
-            className={`h-screen w-full relative slide content bg-[#141414] ${
+            className={`h-screen w-full relative slide content bg-customblack ${
               i === activeSlide ? "active-content" : "inactive-content"
             } ${i === activeSlide ? "active-slide" : "inactive-slide"}`}
           >
             <div
-              className={`slide flex flex-col z-40 bg-transparent absolute top-[50%] -left-[90px] -translate-y-[50%] transition-transform duration-800 content ${
+              className={`slide flex flex-col z-40 bg-transparent absolute top-[50%] -left-[90px] 3xl:left-[200px] -translate-y-[50%] transition-transform duration-800 content ${
                 i === activeSlide ? "active-content" : "inactive-content"
               }`}
             >
@@ -156,18 +157,18 @@ function SimpleSlider() {
                   INTERIOR DESIGN
                 </span>
               </div>
-              <h1 className="text-[68px] font-extrabold mt-[40px] text-[#E6E6E6]">
+              <h1 className="text-[68px] font-extrabold mt-[40px] text-customwhite">
                 Little Cottage
               </h1>
               <h1 className="text-[68px] font-extrabold text-transparent stroke-text mt-[50px] max-w-[600px]">
                 Concept
               </h1>
-              <p className="mt-[50px] text-[13px] text-[#e6e6e6d1] w-[340px] leading-relaxed tracking-wide font-light">
+              <p className="mt-[50px] text-[13px] text-customwhite w-[340px] leading-relaxed tracking-wide font-light">
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cum
                 nihil inventore in nemo ullam explicabo.
               </p>
-              <div className="text-[#E6E6E6] text-[10px] tracking-widest font-semibold mt-[30px] flex items-center gap-3">
-                <button className="py-2 w-[150px] border-[2px] rounded-[3px] border-[#E6E6E6] hover:text-[#DF0303] cursor-pointer transition duration-500">
+              <div className="text-customwhite text-[10px] tracking-widest font-semibold mt-[30px] flex items-center gap-3">
+                <button className="py-2 w-[150px] border-[2px] rounded-[3px] border-customwhite hover:text-[#DF0303] cursor-pointer transition duration-500">
                   OPEN CASE
                 </button>
                 <button className="w-[150px] hover:text-[#DF0303] cursor-pointer transition duration-500">
@@ -175,12 +176,10 @@ function SimpleSlider() {
                 </button>
               </div>
             </div>
-            <div className="flex items-center gap-5"></div>
+            <div className="h-full w-[80vw] relative bg-current overflow-hidden">
+              <div className="absolute left-0 h-[200vh] top-0 bottom-0 w-[350px] 3xl:w-[400px] bg-customblack blur-[150px] z-10 "></div>
 
-            <div className="h-full overflow-hidden w-[80vw] relative">
-              <div className="absolute -left-[150px] h-[200vh] top-0 bottom-0 w-[350px] bg-[#141414] blur-[100px] z-10"></div>
-
-              <div className="absolute -left-[200px] top-0 bottom-0 right-0 bg-[#141414] opacity-30 z-20"></div>
+              <div className="absolute left-0 top-0 bottom-0 right-0 bg-customblack opacity-40 z-20"></div>
               <Image
                 src={`/images/interior${i + 1}.jpg`}
                 alt="carousel image"
@@ -195,7 +194,7 @@ function SimpleSlider() {
         ))}
       </Slider>
 
-      <div className="absolute right-0 top-0 bottom-0 w-[90px] bg-[#141414] z-10"></div>
+      <div className="absolute right-0 top-0 bottom-0 w-[90px] bg-customblack z-10"></div>
 
       <style jsx global>{`
         .slick-slide {
@@ -209,17 +208,9 @@ function SimpleSlider() {
           background-color: #ff0000 !important;
           height: "2px";
         }
-
-        .slick-active .carousel-image {
-          // transform: scale(1.1);
-        }
-
-        .carousel-image {
-          // transform: scale(1.2);
-        }
       `}</style>
     </div>
   );
 }
 
-export default SimpleSlider;
+export default HomePageCarousel;

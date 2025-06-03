@@ -1,9 +1,9 @@
-import FullPageCarousel from "@/pages/home/Carousel";
+import HomePageCarousel from "@/components/main-carousel/Carousel";
 
 export default function Home() {
   return (
     <main>
-      <FullPageCarousel />
+      <HomePageCarousel />
     </main>
   );
 }
