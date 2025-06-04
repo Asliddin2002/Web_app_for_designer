@@ -7,14 +7,16 @@ import DotGrid from "../dots-animation";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./styles.css";
+import { useWindowSize } from "../hooks/useWindowSIze";
 
 function HomePageCarousel() {
   const sliderRef = useRef<Slider>(null);
   const [activeSlide, setActiveSlide] = useState(0);
   const [progress, setProgress] = useState(0);
+  const { isSm } = useWindowSize();
 
   const settings = {
-    dots: true,
+    dots: !isSm,
     infinite: true,
     speed: 1300,
     slidesToShow: 1,
@@ -122,7 +124,7 @@ function HomePageCarousel() {
 
   return (
     <div className="slider-container h-screen overflow-hidden relative z-10 ">
-      <div className="absolute inset-0 -z-10">
+      <div className="hidden md:block absolute inset-0 -z-10">
         <DotGrid
           dotSize={2}
           gap={35}
@@ -137,9 +139,9 @@ function HomePageCarousel() {
       </div>
 
       {/* Progress Bar */}
-      <div className="absolute bottom-[40px] left-[13.5%] 3xl:left-[28%] w-[350px]  h-[2px] bg-[#585454] z-40 rounded-full overflow-hidden">
+      <div className=" hidden md:block absolute bottom-[40px] left-[13.5%] 3xl:left-[28%] w-[350px]  h-[2px] bg-[#585454] z-40 rounded-full overflow-hidden">
         <div
-          className="h-full bg-[#FF0000] transition-all duration-100 ease-linear rounded-full"
+          className="h-full bg-customred transition-all duration-100 ease-linear rounded-full"
           style={{ width: `${progress}%` }}
         ></div>
       </div>
@@ -153,27 +155,27 @@ function HomePageCarousel() {
             } ${i === activeSlide ? "active-slide" : "inactive-slide"}`}
           >
             <div
-              className={`slide flex flex-col z-40 bg-transparent absolute top-[50%] -left-[90px] 3xl:left-[200px] -translate-y-[50%] transition-transform duration-800 content ${
+              className={`slide flex flex-col z-40 bg-[rgba(20,20,20,0.7)] w-[92%]  md:w-auto  md:bg-transparent absolute py-6 px-10 md:p-0 bottom-0 pb-[60px] md:pb-0 md:bottom-auto md:top-[50%] md:-left-[90px] 3xl:left-[200px] md:-translate-y-[50%] transition-transform duration-800 content ${
                 i === activeSlide ? "active-content" : "inactive-content"
               }`}
             >
               <div className="flex items-center gap-2">
-                <div className="w-[25px] h-[3px] bg-[#FF0000] rounded-2xl"></div>
+                <div className="w-[25px] h-[3px] bg-customred rounded-2xl"></div>
                 <span className="text-[10px] font-bold tracking-widest text-[#939393]">
                   INTERIOR DESIGN
                 </span>
               </div>
-              <h1 className="text-[68px] font-extrabold mt-[40px] text-customwhite">
+              <h1 className="text-[34px] md:text-[68px] font-extrabold mt-3 md:mt-[40px] text-customwhite">
                 Little Cottage
               </h1>
-              <h1 className="text-[68px] font-extrabold text-transparent stroke-text mt-[50px] max-w-[600px]">
+              <h1 className="text-[34px] md:text-[68px] font-extrabold text-transparent stroke-text mt-3 md:mt-[50px] max-w-[600px]">
                 Concept
               </h1>
-              <p className="mt-[50px] text-[13px] text-customwhite w-[340px] leading-relaxed tracking-wide font-light">
+              <p className="mt-6 md:mt-[50px] text-[13px] text-customwhite md:w-[340px] leading-relaxed tracking-wide font-light">
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cum
                 nihil inventore in nemo ullam explicabo.
               </p>
-              <div className="text-customwhite text-[10px] tracking-widest font-semibold mt-[30px] flex items-center gap-3">
+              <div className="text-customwhite text-[10px] tracking-widest font-semibold mt-[30px] flex flex-col sm:flex-row sm:items-center gap-3">
                 <button className="py-2 w-[150px] border-[2px] rounded-[3px] border-customwhite hover:text-[#DF0303] cursor-pointer transition duration-500">
                   OPEN CASE
                 </button>
@@ -182,7 +184,7 @@ function HomePageCarousel() {
                 </button>
               </div>
             </div>
-            <div className="h-full w-[80vw] relative bg-current overflow-hidden">
+            <div className="h-full md:w-[80vw] relative bg-current overflow-hidden">
               <div className="absolute left-0 h-[200vh] top-0 bottom-0 w-[350px] 3xl:w-[400px] bg-customblack blur-[150px] z-10 "></div>
 
               <div className="absolute left-0 top-0 bottom-0 right-0 bg-customblack opacity-40 z-20"></div>
@@ -200,7 +202,7 @@ function HomePageCarousel() {
         ))}
       </Slider>
 
-      <div className="absolute right-0 top-0 bottom-0 w-[90px] bg-customblack z-10"></div>
+      <div className="hidden md:block absolute right-0 top-0 bottom-0 w-[90px] bg-customblack z-10"></div>
 
       <style jsx global>{`
         .slick-slide {

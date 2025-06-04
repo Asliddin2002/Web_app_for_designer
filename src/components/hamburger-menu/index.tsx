@@ -1,20 +1,30 @@
 "use client";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
+
+const navLink = [
+  { id: 1, path: "/", label: "Home" },
+  { id: 2, path: "/about", label: "About" },
+  { id: 3, path: "/portfolio", label: "Works" },
+  { id: 4, path: "/contact", label: "Contact" },
+];
 
 const HamburgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const [showContact, setShowContact] = useState(false);
+  const pathname = usePathname();
+
+  console.log("pathname", pathname);
 
   const toggleMenu = () => {
     if (!isAnimating) {
       setIsAnimating(true);
       setIsOpen(!isOpen);
       if (!isOpen) {
-        // When opening, show contact panel after a delay
         setTimeout(() => setShowContact(true), 150);
       } else {
-        // When closing, hide contact panel immediately
         setShowContact(false);
       }
     }
@@ -31,7 +41,6 @@ const HamburgerMenu = () => {
 
   return (
     <>
-      {/* Hamburger Button */}
       <div
         className="absolute right-0 top-0 w-[168px] h-[90px] bg-customblack z-40 flex items-center justify-center gap-[32px]"
         onClick={toggleMenu}
@@ -64,42 +73,26 @@ const HamburgerMenu = () => {
 
       <div
         className={`fixed inset-0 bg-[#0a0a0a] z-30 transform transition-transform duration-500 ease-in-out ${
-          isOpen ? "translate-x-0" : "duration-800 ease-out translate-x-full"
+          isOpen
+            ? "translate-x-0"
+            : "duration-500 md:duration-800 ease-out translate-x-full"
         }`}
       >
         <div className="container mx-auto h-full flex">
-          <div className="h-full flex flex-col justify-center pl-[215px] w-1/2">
+          <div className="h-full flex flex-col justify-center  items-center  sm:pl-[50px] lg:pl-[215px] w-full sm:w-1/2">
             <nav className="space-y-8">
-              <a
-                href="#"
-                className="block text-white text-4xl font-light hover:text-gray-300 transition-colors"
-              >
-                Home
-              </a>
-              <a
-                href="#"
-                className="block text-white text-4xl font-light hover:text-gray-300 transition-colors"
-              >
-                About
-              </a>
-              <a
-                href="#"
-                className="block text-white text-4xl font-light hover:text-gray-300 transition-colors"
-              >
-                Works
-              </a>
-              <a
-                href="#"
-                className="block text-white text-4xl font-light hover:text-gray-300 transition-colors"
-              >
-                Contact
-              </a>
-              <a
-                href="#"
-                className="block text-white text-4xl font-light hover:text-gray-300 transition-colors"
-              >
-                Blog
-              </a>
+              {navLink.map((nav) => (
+                <Link
+                  onClick={() => setIsOpen(false)}
+                  key={nav.id}
+                  href={nav.path}
+                  className={`block text-xl sm:text-4xl font-semibold hover:text-gray-300 transition-colors ${
+                    pathname === nav.path ? "text-customred" : "text-white"
+                  }`}
+                >
+                  {nav.label}
+                </Link>
+              ))}
             </nav>
           </div>
         </div>
@@ -107,7 +100,7 @@ const HamburgerMenu = () => {
 
       {/* Contact Panel (Right Side) */}
       <div
-        className={`fixed right-0 top-0 h-full w-[563px] bg-customblack z-30 transform transition-transform ${
+        className={`hidden sm:block fixed right-0 top-0 h-full w-[350px] xl:w-[563px] 3xl:w-[1050px] bg-customblack z-30 transform transition-transform ${
           isOpen
             ? "translate-x-0 duration-500 ease-out"
             : "translate-x-full duration-100 ease-in"
@@ -117,26 +110,26 @@ const HamburgerMenu = () => {
         }}
       >
         <div className="h-full flex flex-col justify-center pl-[40px]">
-          <div className="space-y-8 text-white">
+          <div className="space-y-8 text-white tracking-widest">
             <div>
-              <p className="text-sm text-gray-400">COUNTRY:</p>
-              <p className="text-lg">Uzbekistan</p>
+              <p className="text-xs text-gray-400">COUNTRY:</p>
+              <p className="text-md text-gray-400">Uzbekistan</p>
             </div>
             <div>
-              <p className="text-sm text-gray-400">CITY:</p>
-              <p className="text-lg">Tashkent</p>
+              <p className="text-xs text-gray-400">CITY:</p>
+              <p className="text-md text-gray-400">Tashkent</p>
             </div>
             <div>
-              <p className="text-sm text-gray-400">ADRESS:</p>
-              <p className="text-lg">Yunusobod 13\12\34</p>
+              <p className="text-xs text-gray-400">ADRESS:</p>
+              <p className="text-md text-gray-400">Yunusobod 13\12\34</p>
             </div>
             <div>
-              <p className="text-sm text-gray-400">EMAIL:</p>
-              <p className="text-lg">tursunaliyev@mail.com</p>
+              <p className="text-xs text-gray-400">EMAIL:</p>
+              <p className="text-md text-gray-400">tursunaliyev@mail.com</p>
             </div>
             <div>
-              <p className="text-sm text-gray-400">PHONE:</p>
-              <p className="text-lg">+(998) 99 556 59 67</p>
+              <p className="text-xs text-gray-400">PHONE:</p>
+              <p className="text-md text-gray-400">+(998) 99 556 59 67</p>
             </div>
           </div>
         </div>
