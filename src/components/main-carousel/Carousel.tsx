@@ -12,7 +12,6 @@ function HomePageCarousel() {
   const sliderRef = useRef<Slider>(null);
   const [activeSlide, setActiveSlide] = useState(0);
   const [progress, setProgress] = useState(0);
-  const progressInterval = useRef<NodeJS.Timeout>(null);
 
   const settings = {
     dots: true,
