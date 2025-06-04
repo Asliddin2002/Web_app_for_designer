@@ -45,10 +45,11 @@ export default function Loader() {
         }`}
       >
         <Image
-          src={"/_TURSUNALIYEV.png"}
+          src={"/TURSUNALIYEV.webp"}
           alt="logo"
           width={100}
           height={36.71}
+          quality={85}
           priority
         />
       </div>

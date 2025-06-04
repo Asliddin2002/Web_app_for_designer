@@ -182,7 +182,7 @@ function HomePageCarousel() {
 
               <div className="absolute left-0 top-0 bottom-0 right-0 bg-customblack opacity-40 z-20"></div>
               <Image
-                src={`/images/interior${i + 1}.jpg`}
+                src={`/images/interior${i + 1}.webp`}
                 alt="carousel image"
                 width={1920}
                 height={1080}
