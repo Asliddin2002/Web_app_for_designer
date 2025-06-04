@@ -66,21 +66,27 @@ function HomePageCarousel() {
   };
 
   useEffect(() => {
-    progressInterval.current = setInterval(() => {
+    let animationFrameId: number;
+    let startTime: number | null = null;
+    const duration = 10000;
+
+    const animate = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const elapsed = timestamp - startTime;
+      const newProgress = Math.min((elapsed / duration) * 100, 100);
       setProgress((prev) => {
-        const increment = 100 / (10000 / 16);
-        const newProgress = prev + increment;
-        if (newProgress >= 100 && progressInterval.current) {
-          clearInterval(progressInterval.current);
-          return 100;
-        }
-        return newProgress;
+        return Math.abs(newProgress - prev) > 0.5 ? newProgress : prev;
       });
-    }, 16);
-    return () => {
-      if (progressInterval.current) {
-        clearInterval(progressInterval.current);
+
+      if (elapsed < duration) {
+        animationFrameId = requestAnimationFrame(animate);
       }
+    };
+
+    animationFrameId = requestAnimationFrame(animate);
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
     };
   }, [activeSlide]);
 
