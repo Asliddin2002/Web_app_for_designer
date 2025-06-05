@@ -143,3 +143,29 @@ body {
 .font-gilroy-light {
   font-family: "gilroy-light", sans-serif;
 }
+
+/* scroll animation */
+
+@layer utilities {
+  @keyframes scroll-dot {
+    0%,
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    50% {
+      transform: translateY(13px);
+      opacity: 0.5;
+    }
+  }
+  .animate-scroll-dot {
+    animation: scroll-dot 1.8s infinite ease-in-out;
+  }
+}
+
+.stroke-text {
+  -webkit-text-stroke: 2px #e6e6e6;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
