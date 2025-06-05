@@ -1,7 +1,6 @@
 import Image from "next/image";
 import React from "react";
 import Devider from "../devider";
-import BannerTitle from "../tittles/BannerTitle";
 
 const Banner = () => {
   return (
@@ -18,15 +17,17 @@ const Banner = () => {
       </div>
       <div className=" absolute flex flex-col items-center space-y-4 z-20">
         <Devider text="About me" />
-        <BannerTitle
-          text="Design is Intelligence
-Made Visible."
-        />
+        <div className=" text-center">
+          <h1 className="text-[34px] md:text-[68px] font-extrabold mt-3 md:mt-[20px] text-customwhite text-center">
+            Hasanbek Tursunaliyev
+          </h1>
+          <h1 className="text-[34px] md:text-[68px] font-extrabold text-transparent stroke-text mt-3 md:mt-[50px]">
+            Interior Designer
+          </h1>
+        </div>
         <h5 className=" text-customwhite font-medium text-sm mt-[30px] tracking-wide">
-          Hasanbek Tursunaliyev {""}
-          <span className=" font-light text-xs text-[#939393]">
-            - Graphic Designer, Art Director
-          </span>
+          I am an interior, exterior and graphic designer!
+          <span className=" font-light text-xs text-[#939393]"></span>
         </h5>
         <div className="flex flex-col items-center space-y-7 mt-4">
           <div
