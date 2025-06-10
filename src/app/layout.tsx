@@ -33,7 +33,7 @@ export default function RootLayout({
       >
         <Loader />
 
-        <div className=" relative">
+        <div className=" fixed top-0 left-0 z-50 w-full">
           <Logo />
           <HamburgerMenu />
         </div>
