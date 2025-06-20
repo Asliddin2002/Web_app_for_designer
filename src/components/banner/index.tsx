@@ -2,7 +2,14 @@ import Image from "next/image";
 import React from "react";
 import Devider from "../devider";
 
-const Banner = () => {
+type Props = {
+  title1: string;
+  title2: string;
+  desc: string;
+  devider: string;
+};
+
+const Banner = ({ title1, title2, desc, devider }: Props) => {
   return (
     <header className="relative h-[80vh]  w-full flex items-center justify-center overflow-hidden">
       <div className=" absolute top-0 left-0 bottom-0 z-10 w-full">
@@ -16,17 +23,17 @@ const Banner = () => {
         />
       </div>
       <div className=" absolute flex flex-col items-center space-y-4 z-20">
-        <Devider text="About me" />
+        <Devider text={devider} />
         <div className=" text-center">
           <h1 className="text-[34px] md:text-[68px] font-extrabold mt-3 md:mt-[20px] text-customwhite text-center">
-            Hasanbek Tursunaliyev
+            {title1}
           </h1>
           <h1 className="text-[34px] md:text-[68px] font-extrabold text-transparent stroke-text mt-3 md:mt-[50px]">
-            Interior Designer
+            {title2}
           </h1>
         </div>
         <h5 className=" text-customwhite font-medium text-sm mt-[30px] tracking-wide">
-          I am an interior, exterior and graphic designer!
+          {desc}
           <span className=" font-light text-xs text-[#939393]"></span>
         </h5>
         <div className="flex flex-col items-center space-y-7 mt-4">

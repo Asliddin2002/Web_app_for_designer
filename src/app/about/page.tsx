@@ -16,7 +16,12 @@ export const metadata = {
 const About = () => {
   return (
     <section id="about">
-      <Banner />
+      <Banner
+        devider="About me"
+        title1="Hasanbek Tursunaliyev"
+        title2={"Interior Designer"}
+        desc="I am an interior, exterior and graphic designer!"
+      />
       <Devider text="Avtobiografiya" count={"01"} />
       <div className=" flex items-center justify-center mt-[50px]">
         <Image
