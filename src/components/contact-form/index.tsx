@@ -41,7 +41,7 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="max-w-[850px] mx-auto p-6">
+    <div className="max-w-[750px] mx-auto p-6">
       <h1 className="text-6xl font-bold mb-8 text-center text-customwhite my-6">
         Write us a message
       </h1>
@@ -171,7 +171,7 @@ const ContactForm = () => {
             SEND MESSAGE
           </button>
 
-          <p className="text-sm text-gray-500 tracking-wider">
+          <p className="text-sm text-gray-500 tracking-wide">
             <span className=" text-customred ">*</span> We promise not to share
             your personal information with third parties.
           </p>

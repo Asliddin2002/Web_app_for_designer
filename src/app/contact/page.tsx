@@ -13,11 +13,40 @@ const Contacts = () => {
         title2={"Write us a message."}
         desc="Lorem ipsum dolor sit amet, consectetur. Adipisicing elit suscipit, at."
       />
+      <div className="flex mx-auto max-w-[550px] justify-between mb-[70px]">
+        <div className="flex flex-col items-center">
+          <Devider text="Location" count={"01"} />
+          <h3 className="text-[22px] font-bold mt-[35px] mb-6">
+            Welcome to visit
+          </h3>
+          <p className=" text-gray-300 text-center font-medium text-sm  tracking-wide">
+            Tashkent, Yunusubod
+          </p>
+          <p className=" text-customwhite text-center font-medium text-sm  tracking-wide">
+            Kulol Qo'rg'on 34/14
+          </p>
+        </div>
+        <div className="flex flex-col items-center">
+          <Devider text="Contact" count={"02"} />
+          <h3 className="text-[22px] font-bold mt-[35px]  mb-6">
+            Shall we talk?
+          </h3>
+          <p className=" text-gray-300 text-center font-medium text-sm  tracking-wide">
+            Email: mireya.inbox@mail.com
+          </p>
+          <p className=" text-customwhite text-center font-medium text-sm  tracking-wide">
+            Phone: +4 9(054) 996 84 25
+          </p>
+          <p className=" text-customwhite text-center font-medium text-sm  tracking-wide">
+            Telegram: @TursunaliyevH
+          </p>
+        </div>
+      </div>
       <Devider text="Contact form" count={"03"} />
       <ContactForm />
       <div className="mt-[50px] mb-[100px]">
         <Devider text="Call to action" />
-        <div className=" text-center mt-[40px]">
+        <div className=" text-center mt-[40px] ">
           <h1 className="text-[34px] md:text-[68px] font-extrabold mt-3 md:mt-[20px] text-customwhite text-center">
             Do you have{" "}
             <span className=" text-transparent stroke-text ">a project?</span>
