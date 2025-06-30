@@ -5,6 +5,7 @@ import "./globals.css";
 import Loader from "@/components/loader";
 import HamburgerMenu from "@/components/hamburger-menu";
 import Logo from "@/components/logo";
+import { ToastContainer } from "react-toastify";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,6 +37,7 @@ export default function RootLayout({
         <div className=" fixed top-0 left-0 z-50 w-full">
           <Logo />
           <HamburgerMenu />
+          <ToastContainer />
         </div>
         {children}
       </body>
