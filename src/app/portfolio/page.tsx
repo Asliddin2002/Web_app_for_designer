@@ -1,6 +1,7 @@
 import Banner from "@/components/banner";
 import Devider from "@/components/devider";
 import Footer from "@/components/footer";
+import ProjectList from "@/components/portfolio";
 import React from "react";
 
 const Projects = () => {
@@ -12,6 +13,7 @@ const Projects = () => {
         title2={"Professional Cases"}
         desc="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
       />
+      <ProjectList />
       {/* <Devider text="Portfolio" count={"01"} /> */}
       <div className="mt-[50px] mb-[100px]">
         <Devider text="Call to action" />
