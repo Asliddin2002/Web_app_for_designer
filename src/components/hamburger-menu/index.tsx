@@ -2,11 +2,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
-import EditIcon from "../icons/EditIcon";
-import { useAmIAdmin } from "@/hooks/useAmIAdmin";
-import { useRouter } from "next/navigation";
-import ArrowRightIcon from "../icons/ArrowRightIcon";
-import { span } from "framer-motion/client";
 
 const navLink = [
   { id: 1, path: "/", label: "Home" },
@@ -20,9 +15,6 @@ const HamburgerMenu = () => {
   const [isAnimating, setIsAnimating] = useState(false);
   const [showContact, setShowContact] = useState(false);
   const pathname = usePathname();
-  const router = useRouter();
-
-  const isAdmin = useAmIAdmin();
 
   console.log("pathname", pathname);
 
@@ -47,27 +39,25 @@ const HamburgerMenu = () => {
     }
   }, [isOpen]);
 
-  const isInEditPage = pathname.includes("edit");
+  // const isInEditPage = pathname.includes("edit");
 
-  const handleJumpToUpdatePage = (e: any) => {
-    e.preventDefault();
-    if (isAdmin) {
-      if (isInEditPage) {
-        router.back();
-      } else {
-        router.push(`${pathname}/edit`);
-      }
-    }
-  };
+  // const handleJumpToUpdatePage = (e: any) => {
+  //   e.preventDefault();
+  //   if (isAdmin) {
+  //     if (isInEditPage) {
+  //       router.back();
+  //     } else {
+  //       router.push(`${pathname}/edit`);
+  //     }
+  //   }
+  // };
 
   return (
     <>
       <div
-        className={`absolute right-0 top-0  h-[90px] bg-customblack z-40 flex items-center justify-center gap-[32px] ${
-          isAdmin ? "w-[188px]" : "w-[168px]"
-        }`}
+        className={`absolute right-0 top-0  h-[90px] bg-customblack z-40 flex items-center justify-center gap-[32px] w-[168px] `}
       >
-        {isAdmin && (
+        {/* {isAdmin && (
           <button
             onClick={handleJumpToUpdatePage}
             className="border-[1.5px] border-customwhite rounded-sm p-2 w-[30px] h-[30px] flex items-center justify-center text-customwhite hover:text-customred cursor-pointer hover:border-customred transition-colors duration-300"
@@ -80,7 +70,7 @@ const HamburgerMenu = () => {
               <EditIcon />
             )}
           </button>
-        )}
+        )} */}
         <span className="text-[10px] font-semibold tracking-[3px] text-customwhite">
           MENU
         </span>

@@ -25,7 +25,7 @@ const Projects = () => {
         </div>
         <div className="text-customwhite text-[10px] tracking-widest  font-semibold mt-[60px] flex items-center justify-center gap-3 ">
           <button className="py-2 w-[150px] border-[2px] rounded-[3px] border-customwhite hover:text-[#DF0303] cursor-pointer transition duration-500">
-            LET'S DISCUSS
+            LET&apos;S DISCUSS
           </button>
           <button className="w-[150px] hover:text-[#DF0303] cursor-pointer transition duration-500">
             PORTFOLIO

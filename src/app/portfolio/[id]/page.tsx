@@ -111,7 +111,7 @@ const ProjectDetails = () => {
             }}
             whileTap={{ scale: 0.95 }}
           >
-            LET'S DISCUSS
+            LET&apos;S DISCUSS
           </motion.button>
           <motion.button
             className="w-[150px] hover:text-[#DF0303] cursor-pointer transition duration-500"

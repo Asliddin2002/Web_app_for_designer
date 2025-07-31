@@ -23,7 +23,7 @@ const Contacts = () => {
             Tashkent, Yunusubod
           </p>
           <p className=" text-customwhite text-center font-medium text-sm  tracking-wide">
-            Kulol Qo'rg'on 34/14
+            Kulol Qo&apos;rg&apos;on 34/14
           </p>
         </div>
         <div className="flex flex-col items-center">
@@ -54,7 +54,7 @@ const Contacts = () => {
         </div>
         <div className="text-customwhite text-[10px] tracking-widest  font-semibold mt-[60px] flex items-center justify-center gap-3 ">
           <button className="py-2 w-[150px] border-[2px] rounded-[3px] border-customwhite hover:text-[#DF0303] cursor-pointer transition duration-500">
-            LET'S DISCUSS
+            LET&apos;S DISCUSS
           </button>
           <button className="w-[150px] hover:text-[#DF0303] cursor-pointer transition duration-500">
             PORTFOLIO
