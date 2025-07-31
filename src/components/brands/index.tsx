@@ -34,13 +34,13 @@ export default function BrandCarousel() {
       },
       {
         breakpoint: 480,
-        settings: { slidesToShow: 2 },
+        settings: { slidesToShow: 3 },
       },
     ],
   };
 
   return (
-    <div className="w-full lg:w-[900px] mx-auto bg-customblack py-10">
+    <div className="w-full lg:w-[900px] mx-auto bg-customblack pt-2 pb-8 sm:py-10">
       <Slider {...settings}>
         {brandLogos.map((logo, index) => (
           <div key={index} className="px-4">

@@ -22,9 +22,9 @@ const Banner = ({ title1, title2, desc, devider }: Props) => {
           className={`carousel-image object-cover w-full h-full transition-transform duration-800 image`}
         />
       </div>
-      <div className=" absolute flex flex-col items-center space-y-4 z-20">
+      <div className=" px-2 sm:px-0 absolute flex flex-col items-center space-y-4 z-20">
         <Devider text={devider} />
-        <div className=" text-center">
+        <div className=" text-center leading-[40px] sm:leading-[30px]">
           <h1 className="text-[34px] md:text-[68px] font-extrabold mt-3 md:mt-[20px] text-customwhite text-center">
             {title1}
           </h1>
@@ -32,7 +32,7 @@ const Banner = ({ title1, title2, desc, devider }: Props) => {
             {title2}
           </h1>
         </div>
-        <h5 className=" text-customwhite font-medium text-sm mt-[30px] tracking-wide">
+        <h5 className=" text-customwhite font-medium text-sm mt-[30px] tracking-wide text-center">
           {desc}
           <span className=" font-light text-xs text-[#939393]"></span>
         </h5>

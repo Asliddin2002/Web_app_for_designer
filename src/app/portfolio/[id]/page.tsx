@@ -49,9 +49,9 @@ const ProjectDetails = () => {
         title2={"Professional Cases"}
         desc="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
       />
-
+      <Devider text="Works" count={"01"} />
       {/* Masonry Grid Container */}
-      <div className="p-4 container mx-auto">
+      <div className="p-4 pt-12 sm:pb-12 container mx-auto">
         <motion.div
           variants={container}
           initial="hidden"
@@ -83,22 +83,22 @@ const ProjectDetails = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="mt-[50px] mb-[100px]">
+      <div className="mt-[50px] mb-[50px] sm:mb-[100px]">
         <Devider text="Call to action" />
         <motion.div
-          className="text-center mt-[40px]"
+          className="text-center sm:mt-[40px]"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
-          <h1 className="text-[34px] md:text-[68px] font-extrabold mt-3 md:mt-[20px] text-customwhite text-center">
+          <h1 className="text-[34px] md:text-[68px] font-extrabold mt-3 md:mt-[20px] text-customwhite text-center leading-[40px]">
             Do you have{" "}
             <span className="text-transparent stroke-text">a project?</span>
           </h1>
         </motion.div>
 
         <motion.div
-          className="text-customwhite text-[10px] tracking-widest font-semibold mt-[60px] flex items-center justify-center gap-3"
+          className="text-customwhite text-[10px] tracking-widest font-semibold mt-[40px] sm:mt-[60px] flex items-center justify-center gap-3"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}

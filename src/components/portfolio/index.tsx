@@ -110,7 +110,7 @@ export default function ProjectList() {
         );
 
   return (
-    <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+    <div className="sm:min-h-screen py-8 sm:py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Category Filters with animation */}
         <motion.div
@@ -123,7 +123,7 @@ export default function ProjectList() {
             <motion.button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`px-4 py-2 text-xs font-semibold transition-colors cursor-pointer ${
+              className={`px-4 sm:py-2 text-xs font-semibold transition-colors cursor-pointer ${
                 activeCategory === category
                   ? "text-customred"
                   : "text-customwhite"

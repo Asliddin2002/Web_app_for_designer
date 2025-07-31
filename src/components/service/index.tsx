@@ -2,8 +2,8 @@ import React from "react";
 
 const Services = () => {
   return (
-    <section className=" bg-customblack text-customwhite pt-8 px-4">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 space-y-[60px] w-[700px]">
+    <section className=" bg-customblack text-customwhite pb-10 sm:pb-0 pt-8 px-4">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 sm:gap-12 space-y-[60px] sm:w-[700px]">
         {/* Card 1 */}
         <div className="text-center space-y-6">
           <h3 className="text-[22px] font-bold">

@@ -10,7 +10,7 @@ export default function VideoSection() {
 
   return (
     <>
-      <div className="h-[552px] w-[920px] overflow-hidden mt-[100px] relative">
+      <div className="h-[552px] w-full sm:w-[920px] overflow-hidden mt-[100px] relative">
         <Image
           src="/images/video.jpg"
           alt="video"

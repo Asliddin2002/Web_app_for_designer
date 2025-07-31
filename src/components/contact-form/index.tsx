@@ -42,11 +42,11 @@ const ContactForm = () => {
 
   return (
     <div className="max-w-[750px] mx-auto p-6">
-      <h1 className="text-6xl font-bold mb-8 text-center text-customwhite my-6">
+      <h1 className="text-4xl sm:text-6xl font-bold mb-4 sm:mb-8 text-center text-customwhite my-6">
         Write us a message
       </h1>
 
-      <form onSubmit={handleSubmit} className="space-y-6 mt-[50px]">
+      <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6 mt-[50px]">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <label
@@ -167,11 +167,11 @@ const ContactForm = () => {
         </div>
 
         <div className="flex justify-between items-center">
-          <button className="py-[18px] text-customwhite  tracking-widest  font-semibold w-[200px] border-[2px] text-xs rounded-[3px] border-customwhite hover:text-[#DF0303] cursor-pointer transition duration-500">
+          <button className="py-[18px] text-customwhite  tracking-widest  font-semibold w-full sm:w-[200px] border-[2px] text-xs rounded-[3px] border-customwhite hover:text-[#DF0303] cursor-pointer transition duration-500">
             SEND MESSAGE
           </button>
 
-          <p className="text-sm text-gray-500 tracking-wide">
+          <p className=" hidden sm:block text-[9px] sm:text-sm text-gray-500 tracking-wide">
             <span className=" text-customred ">*</span> We promise not to share
             your personal information with third parties.
           </p>

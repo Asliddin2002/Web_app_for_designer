@@ -13,17 +13,19 @@ const Projects = () => {
         title2={"Professional Cases"}
         desc="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
       />
+      <Devider text="Works" count={"01"} />
+
       <ProjectList />
       {/* <Devider text="Portfolio" count={"01"} /> */}
-      <div className="mt-[50px] mb-[100px]">
+      <div className="mt-[50px] mb-[50px] sm:mb-[100px]">
         <Devider text="Call to action" />
-        <div className=" text-center mt-[40px]">
-          <h1 className="text-[34px] md:text-[68px] font-extrabold mt-3 md:mt-[20px] text-customwhite text-center">
+        <div className=" text-center sm:mt-[40px]">
+          <h1 className="text-[34px] md:text-[68px] font-extrabold mt-3 md:mt-[20px] text-customwhite text-center leading-[40px]">
             Do you have{" "}
             <span className=" text-transparent stroke-text ">a project?</span>
           </h1>
         </div>
-        <div className="text-customwhite text-[10px] tracking-widest  font-semibold mt-[60px] flex items-center justify-center gap-3 ">
+        <div className="text-customwhite text-[10px] tracking-widest  font-semibold mt-[40px] sm:mt-[60px] flex items-center justify-center gap-3 ">
           <button className="py-2 w-[150px] border-[2px] rounded-[3px] border-customwhite hover:text-[#DF0303] cursor-pointer transition duration-500">
             LET&apos;S DISCUSS
           </button>
